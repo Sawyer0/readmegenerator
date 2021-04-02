@@ -1,59 +1,49 @@
-// Input
-// Prompt user for questions
 const inquirer = require('inquirer');
+const fs = require('fs');
+const util = require('util');
 
-inquirer
-  .prompt([
+const writeFileAsync = util.promisify(fs.writeFile);
+
+const promptUser = () => {
+  return inquirer.prompt([
     {
       type: 'input',
-      message: 'What is your user name?',
-      name: 'username',
+      name: 'title',
+      message: 'Enter a title.',
     },
     {
-      type: 'password',
-      message: 'What is your password?',
-      name: 'password',
+      type: 'input',
+      name: 'description',
+      message: 'Enter a description.',
     },
     {
-      type: 'password',
-      message: 'Re-enter password to confirm:',
-      name: 'confirm',
+      type: 'input',
+      name: 'installation instructions',
+      message: 'Enter your installation instructions.',
     },
-  ])
+    {
+      type: 'input',
+      name: 'usage Info',
+      message: 'Enter usage information.',
+    },
+    {
+      type: 'input',
+      name: 'contribution guidelines',
+      message: 'Enter your contribution guidelines.',
+    },
+    {
+      type: 'input',
+      name: 'test instructions',      
+      message: 'Enter your Test Instructions.',
+    },
+  ]);
+};
 
-  .then(function (response) {
-    console.log(response)
-    // Processing
-    // Figure out how to get answers to questions into markdown file create a 
-    
-    
-    // Output
-    // Give user markdown file
+const init = () => {
+  promptUser()
+    .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
+    .then(() => console.log('Successfully wrote to index.html'))
+    .catch((err) => console.error(err));
+};
 
-
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
 init();
