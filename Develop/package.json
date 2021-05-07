@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "badges": "^4.24.0",
     "inquirer": "^6.3.1"
   }
 }
