@@ -5,7 +5,6 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser = () => {
-  // console.log('in the promptUser func')
   return inquirer.prompt([
     {
       type: "input",
@@ -98,7 +97,7 @@ const init = async () => {
     const fileContent = generateMarkdown(answers);
 
     // create a readme.md file on the computer
-    await writeToFile("./README.md", fileContent);
+    await writeToFile("./created/README.md", fileContent);
 
     console.log("read me created");
   } catch (err) {
