@@ -13,7 +13,7 @@ const promptUser = () => {
     },
     {
       type: "input",
-      name: "userName",
+      name: "username",
       message: "Enter a user name.",
     },
     {
@@ -35,6 +35,11 @@ const promptUser = () => {
       type: "input",
       name: "usage",
       message: "Enter usage information.",
+    },
+    {
+      type: "input",
+      name: "license",
+      message: "Enter your license information."
     },
     {
       type: "input",
@@ -60,7 +65,7 @@ const writeToFile = (fileName, data) => {
 function generateMarkdown(data) {
   return `
 # ${data.title}
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/${data.userName}/${data.title})
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 # Description
 ${data.description}
 # Table of Contents 
@@ -71,17 +76,17 @@ ${data.description}
 * [Tests](#tests)
 * [Questions](#questions)
 # Installation
-The following necessary dependencies must be installed to run the application properly: ${data.installation}
+${data.installation}
 # Usage
-​This application is used for ${data.usage}
+${data.usage}
 # License
-This project is license under the ${data.license} license.
+${data.license}
 # Contributing
-​Contributors: ${data.contributor}
+​${data.contribution}
 # Tests
-To run tests, you need to run the following command: ${data.test}
+${data.test}
 # Questions
-If you have any questions about the repo, open an issue or contact ${data.userName} directly ${data.email}.
+If you have any questions about the repo, open an issue or contact ${data.username} directly ${data.email}.
 `;
 }
 
